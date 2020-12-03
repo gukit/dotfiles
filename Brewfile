@@ -35,14 +35,16 @@ cask "brave-browser"
 cask "firefox"
 cask "github"
 cask "google-chrome"
-cask "google-chrome"
+cask "imageoptim"
 cask "iterm2"
 cask "notion"
 cask "tableplus"
+cask "tinkerwell"
 cask "visual-studio-code"
 
 # Mac App Store
 mas "Keynote", id: 409183694
+mas "Microsoft Remote Desktop", id: 1295203466
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Microsoft Remote Desktop", id: 1295203466
+mas "The Unarchiver", id: 425424353
