@@ -6,6 +6,7 @@ tap "homebrew/core"
 tap "homebrew/services"
 
 # Binaries
+brew "antibody"
 brew "coreutils" # Those that come with macOS are outdated
 brew "git"
 brew "httpie"
