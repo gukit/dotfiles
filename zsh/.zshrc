@@ -93,7 +93,7 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 # | ALIASES |
 # +---------+
 
-source $DOTFILES/aliases
+source $DOTFILES/aliases/aliases.zsh
 
 # +--------+
 # | PROMPT |

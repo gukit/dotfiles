@@ -1,48 +1,30 @@
-# Shortcuts
-alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
-alias reloadshell="source $HOME/.zshrc"
-alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
-alias ll="/usr/local/opt/coreutils/libexec/gnubin/ls -AhlFo --color --group-directories-first"
-alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
-alias c="clear"
-
-# Directories
-alias dotfiles="cd $DOTFILES"
-alias library="cd $HOME/Library"
-alias sites="cd $HOME/Sites"
-
-# Laravel
-alias a="php artisan"
-alias fresh="php artisan migrate:fresh --seed"
-alias seed="php artisan db:seed"
+# Git
+alias gc="git checkout"
+alias gst="git status"
+alias gpo="git push origin"
+alias gm="git merge"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias wip="git add . && git commit -m 'wip'"
+alias nah="git reset --hard && git clean -df"
 
 # PHP
+alias p="phpunit"
+alias pf="phpunit --filter "
+alias art="php artisan"
+alias tinker="php artisan tinker"
+alias migrate="php artisan migrate"
+alias mfresh="php artisan migrate:fresh"
+alias mfs="php artisan migrate:fresh --seed"
+alias mrefresh="php artisan migrate:refresh"
+alias dumpload="composer dumpautoload"
+alias freshtest="php artisan migrate:fresh --env=testing"
 alias cfresh="rm -rf vendor/ composer.lock && composer i"
-# alias php74="docker run -it -w /data -v ${PWD}:/data:delegated --entrypoint php --rm registry.gitlab.com/grahamcampbell/php:7.4"
-# alias php8="docker run -it -w /data -v ${PWD}:/data:delegated --entrypoint php --rm registry.gitlab.com/grahamcampbell/php:8.0"
-# alias composer="php -d memory_limit=-1 /usr/local/bin/composer"
+alias path='echo -e ${PATH//:/\\n}'
+alias pest='nocorrect pest'
 
-# JS
-alias nfresh="rm -rf node_modules/ package-lock.json && npm install"
-alias watch="npm run watch"
+# Flush Directory Service cache
+alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
-# Docker
-# alias docker-composer="docker-compose"
-
-# Git
-alias gst="git status"
-alias gb="git branch"
-alias gc="git checkout"
-alias gl="git log --oneline --decorate --color"
-alias amend="git add . && git commit --amend --no-edit"
-alias commit="git add . && git commit -m"
-alias diff="git diff"
-alias force="git push --force"
-alias nuke="git clean -df && git reset --hard"
-alias pop="git stash pop"
-alias pull="git pull"
-alias push="git push"
-alias resolve="git add . && git commit --no-edit"
-alias stash="git stash -u"
-alias unstage="git restore --staged ."
-alias wip="commit wip"
+# Empty the Trash on all mounted volumes and the main HDD
+# Also, clear Apple’s System Logs to improve shell startup speed
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
