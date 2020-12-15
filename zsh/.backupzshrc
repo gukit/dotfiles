@@ -1,0 +1,73 @@
+# start_time="$(date +%s)"
+
+source <(antibody init)
+
+source $HOME/.aliases
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export XDEBUG_CONFIG="idekey=VSCODE"
+
+antibody bundle mafredri/zsh-async
+antibody bundle rupa/z
+antibody bundle zsh-users/zsh-completions
+antibody bundle zsh-users/zsh-autosuggestions
+#antibody bundle zpm-zsh/ls
+# these should be at last!
+antibody bundle sindresorhus/pure
+antibody bundle zdharma/fast-syntax-highlighting
+antibody bundle zsh-users/zsh-history-substring-search
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+# add-zsh-hook precmd _z_precmd
+function _z_precmd {
+  _z --add "$PWD"
+}
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+# to to the beggining/end of line with fn+left/right or home/end
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey '^[[H' beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
+bindkey '^[[F' end-of-line
+
+# Allow [ or ] whereever you want
+unsetopt nomatch
+# ulimit -n 10240
+# export JOBS=max
+
+# search history with fzf if installed, default otherwise
+if test -d /usr/local/opt/fzf/shell; then
+	# shellcheck disable=SC1091
+	. /usr/local/opt/fzf/shell/key-bindings.zsh
+else
+	bindkey '^R' history-incremental-search-backward
+fi
+
+export EDITOR=code
+export PATH="$(brew --prefix php)/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="$PATH:./vendor/bin"
+export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+# export ANDROID_NDK_HOME=/usr/local/share/android-ndk
+# export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+
+#fpath=(/usr/local/share/zsh-completions $fpath)
+
+# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+eval "$(thefuck --alias)"
+eval "$(nodenv init -)"
