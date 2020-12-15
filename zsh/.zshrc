@@ -20,7 +20,6 @@ export NVM_DIR="$HOME/.config/nvm"
 # editor
 
 export EDITOR=code
-export EDITOR=code
 
 # zsh
 
