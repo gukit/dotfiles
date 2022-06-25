@@ -47,6 +47,7 @@ alias tinker="php artisan tinker"
 alias migrate="php artisan migrate"
 alias mfresh="php artisan migrate:fresh"
 alias mfs="php artisan migrate:fresh --seed"
+alias pint="nocorrect pint"
 
 alias freshtest="php artisan migrate:fresh --env=testing"
 
